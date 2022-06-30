@@ -9,7 +9,7 @@ export default function Landing() {
                 <img className='hero-img' src={hero}></img>
                 <div className='cta'>
                     <h1> Life Tracker </h1>
-                    <p> So you don't die </p>
+                    <p> So you don't die [yet] </p>
                 </div>
             </div>
         </div>

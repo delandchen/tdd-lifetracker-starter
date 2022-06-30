@@ -23,5 +23,12 @@
 .landing-page .hero .cta {
     position: relative;
     z-index: 1000;
-    bottom: 500px;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    bottom: 9vh;
+}
+
+.landing-page .hero .cta p {
+    color: rgb(253, 114, 114);
 }

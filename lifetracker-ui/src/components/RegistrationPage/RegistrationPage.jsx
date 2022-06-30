@@ -1,8 +1,11 @@
 import * as React from 'react';
 import './RegistrationPage.css'
+import { Navigate } from 'react-router-dom';
+import AuthContext from 'components/contexts/auth';
 
-export default function RegistrationPage() {
+export default function RegistrationPage({handleRegistrationPost, fieldError, setFieldError}) {
     // States for input field values
+    const { loggedIn } = React.useContext(AuthContext);
     const [email, setEmail] = React.useState("")
     const [username, setUsername] = React.useState("")
     const [firstName, setFirstName] = React.useState("")
@@ -38,8 +41,21 @@ export default function RegistrationPage() {
         }
     }
 
+    const signUpUser = async () => {
+        if (password != passwordConfirm) {
+            setFieldError("Passwords do not match");
+            return;
+        }
+        else {
+            setFieldError("");
+        }
+
+        handleRegistrationPost(username, password, email, firstName, lastName);
+    }
+
     return (
         <div className='registration-page'>
+            {loggedIn && <Navigate to="/activity" replace={true} />}
             <div className="card"> 
                 <h1> Register </h1>
                 <div className='form'>
@@ -51,6 +67,10 @@ export default function RegistrationPage() {
                     </div>
                     <input onChange={handleOnFormChange}className='form-input' type="password" name="password" placeholder='Enter a password' value={password}></input>
                     <input onChange={handleOnFormChange} className='form-input' type="password" name="passwordConfirm" placeholder='Confirm your password' value={passwordConfirm}></input>
+                    <div className="error">
+                        {fieldError ? <p> {fieldError} </p> : null}
+                    </div>
+                    <button className='submit-registration' onClick={signUpUser}> Create Account </button>
                 </div>
             </div>
         </div>

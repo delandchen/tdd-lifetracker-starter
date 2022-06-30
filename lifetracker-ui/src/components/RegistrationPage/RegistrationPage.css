@@ -24,7 +24,7 @@
     display: flex;
     flex-direction: column;
     margin: auto;
-    gap: 40px;
+    gap: 25px;
 }
 
 .registration-page .card .form .form-input {
@@ -36,4 +36,23 @@
     min-width: 14vw;
     font-size: medium;
     margin: 5px;
+}
+
+.registration-page .card .form .submit-registration {
+    height: 70px;
+    color: #fff;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: -5px;
+    background-color: rgb(1, 146, 1);
+}
+
+.registration-page .card .form .error {
+    display: flex;
+    margin: 0;
+    height: 1px;
+    justify-content: flex-start;
+    align-items: center;
+    color: rgb(255, 66, 66);
 }
