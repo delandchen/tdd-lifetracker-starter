@@ -1,9 +1,18 @@
-const { BadRequestError, UnauthorizedError } = require('../utils/errors') 
-const db = require('../db');;
+const { BadRequestError, UnauthorizedError } = require('../utils/errors');
+const db = require('../db');
 const bcrypt = require('bcrypt');
 const { BCRYPT_WORK_FACTOR } = require('../config');
 
 class User {
+    static makePublicUser(user) {
+        return {
+            id: user.id,
+            email: user.email,
+            username: user.username,
+            createdAt: user.createdAt,
+        }
+    }
+
     static async login(credentials) {
         // Check if the request has the required fields
         const requiredFields = ["email", "password"];

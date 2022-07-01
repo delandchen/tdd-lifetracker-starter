@@ -8,45 +8,37 @@ import ActivityPage from "components/ActivityPage/ActivityPage"
 import NutritionPage from "components/NutritionPage/NutritionPage"
 import AuthContext from "components/contexts/auth"
 import { Route, Routes, Navigate } from "react-router-dom"
-import axios from "axios"
+import apiClient from "../../services/apiClient"
 
 
 export default function App() {
   // States
-  const { loggedIn, setLoggedIn } = React.useContext(AuthContext);
+  const { loggedIn, setLoggedIn} = React.useContext(AuthContext);
   const [fieldError, setFieldError] = React.useState("");
-  const [user, setUser] = React.useState({});
+  const [isFetching, setIsFetching] = React.useState(false);
 
-  // API calls and Handlers
-  const handleRegistrationPost = async (username, password, email, firstName, lastName) => {
-    const user = await axios.post("http://localhost:3001/auth/register", 
-    {username: username, password: password, email: email, first_name: firstName, last_name: lastName}).then((res) => {
-      setLoggedIn(true);
-      return res.data;
-    }).catch((err) => {
-      console.log(err);
-      setFieldError(err.response.data.error.message);
-    })
-
-    console.log(user);
-    return user;
-  };
-
-  const handleLoginPost = async (email, password) => {
-    const user = await axios.post("http://localhost:3001/auth/login", 
-    {email: email, password: password}).then((res) => {
-      setLoggedIn(true);
-      return res.data;
-    }).catch((err) => {
-      console.log(err);
-      setFieldError(err.response.data.error.message);
-    })
+  React.useEffect(() => {
+    const fetchUser = async () => {
+      const { data, error } = await apiClient.fetchUserFromToken()
     
-    console.log(user);
-    return user;
-  };
+      if (data) {
+        // setUser(data.user)
+        setLoggedIn(true);
+        }
+      if (error) {
+        console.error(error);
+        }
+    }
+
+    const token = localStorage.getItem(apiClient.tokenName)
+    apiClient.token = token;
+    if (token) {
+      fetchUser();
+    }
+  }, [])
 
   const handleSignOut = () => {
+    apiClient.logoutUser()
     setLoggedIn(false);
   }
 
@@ -58,8 +50,8 @@ export default function App() {
           <Route path="/" element={<Landing />}/>
           <Route path="/activity" element={<ActivityPage />} />
           <Route path="/nutrition" element={<NutritionPage />} />
-          <Route path="/register" element={< RegistrationPage handleRegistrationPost={handleRegistrationPost} fieldError={fieldError} setFieldError={setFieldError}/>}/>
-          <Route path="/login" element={<LoginPage handleLoginPost={handleLoginPost} fieldError={fieldError} setFieldError={setFieldError} />} />
+          <Route path="/register" element={< RegistrationPage fieldError={fieldError} setFieldError={setFieldError}/>}/>
+          <Route path="/login" element={<LoginPage fieldError={fieldError} setFieldError={setFieldError} />} />
         </Routes>
       </React.Fragment>
     </div>

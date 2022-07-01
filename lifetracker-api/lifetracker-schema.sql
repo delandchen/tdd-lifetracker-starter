@@ -18,3 +18,4 @@ CREATE TABLE nutrition (
     user_id INTEGER NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id)
 )
+

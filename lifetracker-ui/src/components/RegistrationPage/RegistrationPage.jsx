@@ -2,10 +2,11 @@ import * as React from 'react';
 import './RegistrationPage.css'
 import { Navigate } from 'react-router-dom';
 import AuthContext from 'components/contexts/auth';
+import apiClient from '../../services/apiClient';
 
-export default function RegistrationPage({handleRegistrationPost, fieldError, setFieldError}) {
+export default function RegistrationPage({fieldError, setFieldError}) {
     // States for input field values
-    const { loggedIn } = React.useContext(AuthContext);
+    const { loggedIn, setLoggedIn } = React.useContext(AuthContext);
     const [email, setEmail] = React.useState("")
     const [username, setUsername] = React.useState("")
     const [firstName, setFirstName] = React.useState("")
@@ -50,8 +51,17 @@ export default function RegistrationPage({handleRegistrationPost, fieldError, se
             setFieldError("");
         }
 
-        handleRegistrationPost(username, password, email, firstName, lastName);
-    }
+        const userData = {username: username, password: password, email: email, first_name: firstName, last_name: lastName}
+        const { data, error } = await apiClient.signUpUser(userData);
+
+        if (error) {
+            setFieldError(error);
+        }
+        if (data?.user) {
+            setLoggedIn(true);
+            apiClient.setToken(data.token);
+        }
+    } 
 
     return (
         <div className='registration-page'>

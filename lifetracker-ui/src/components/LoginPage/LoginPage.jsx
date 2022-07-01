@@ -2,10 +2,11 @@ import * as React from 'react';
 import "./LoginPage.css";
 import AuthContext from 'components/contexts/auth';
 import { Navigate } from 'react-router-dom';
+import apiClient from '../../services/apiClient';
 
-export default function LoginPage({handleLoginPost, fieldError}) {
+export default function LoginPage({fieldError, setFieldError}) {
     // States for input values
-    const { loggedIn } = React.useContext(AuthContext);
+    const { loggedIn, setLoggedIn } = React.useContext(AuthContext);
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
 
@@ -24,7 +25,16 @@ export default function LoginPage({handleLoginPost, fieldError}) {
     }
 
     const signUpUser = async () => {
-        handleLoginPost(email, password);
+        const userData = {password: password, email: email}
+        const { data, error } = await apiClient.loginUser(userData);
+
+        if (error) {
+            setFieldError(error);
+        }
+        if (data?.user) {
+            setLoggedIn(true);
+            apiClient.setToken(data.token);
+        }
     }
 
     return (
