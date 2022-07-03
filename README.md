@@ -2,6 +2,9 @@
 
 ## Overview
 
+PROJECT GIF IS HERE:
+http://g.recordit.co/bW8slBe3p7.gif
+
 > Data is the new oil - Clive Humbly
 
 Everywhere around us is data waiting to be collected and utilized. In recent years we've seen the rise of applications and services that exist to quantify concepts that were previously hard to capture. FitBit, Apple Health, and Woop are all $1 billion dollar services to offer tracking statistics about how we live our lives. The LifeTracker app you'll be building will do exactly that - track your life by quantifying your activity.
