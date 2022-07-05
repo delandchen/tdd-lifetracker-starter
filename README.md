@@ -47,15 +47,15 @@ http://g.recordit.co/bW8slBe3p7.gif
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-[Add your response here]
+Yes the labs did mostly prepare me to complete this assignment. There were some parts that I needed to find tutorials on myself though such as the JWT and user persistence.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-[Add your response here]
+I would have liked to have gotten the activity tracking frontend done for nutrition. I have the backend completed though.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-[Add your response here]
+The requirements for this weeks project were confusing. I feel like each group was working on a different section. If the required features and what we should have been working on was more clear, I would have completed all the core feaatures. But even so, I learned a lot and thats all that matters to me.
 
 ### Open-source libraries used
 
@@ -65,4 +65,4 @@ http://g.recordit.co/bW8slBe3p7.gif
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
 
-[Add your response here]
+Shoutout to my pod members. They're awesome!
