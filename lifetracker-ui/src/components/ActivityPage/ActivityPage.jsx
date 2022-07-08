@@ -15,8 +15,9 @@ export default function ActivityPage() {
     return (
         <div className='activity-page'>
             {!initialized && <Navigate to="/login" replace={true} />}
-            <h1> Activity Page</h1>
-            <ActivityFeed avgCaloriesPerCategory={avgCaloriesPerCategory} totalCaloriesPerDay={totalCaloriesPerDay} />
+            <h1> Dashboard </h1>
+            <ActivityFeed avgCaloriesPerCategory={avgCaloriesPerCategory ? avgCaloriesPerCategory : null} 
+            totalCaloriesPerDay={totalCaloriesPerDay ? totalCaloriesPerDay : null} />
         </div>
     )
 }

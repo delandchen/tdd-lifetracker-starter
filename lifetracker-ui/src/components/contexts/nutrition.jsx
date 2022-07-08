@@ -5,14 +5,15 @@ import apiClient from "../../services/apiClient";
 const NutritionContext = createContext({});
 
 export const NutritionContextProvider = ({children}) => {
-    const { userContext } = useContext(AuthContext);
+    const { userContext, initializedContext } = useContext(AuthContext);
     const [ user, setUser ] = userContext;
+    const [initialized, setInitialized] = initializedContext;
     const [nutrition, setNutrition] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
 
     useEffect(async () => {
-        if (user) {
+        if (apiClient.token) {
             setIsLoading(true);
             try {
                 const res = await apiClient.getNutrition()
@@ -23,7 +24,7 @@ export const NutritionContextProvider = ({children}) => {
             }
             setIsLoading(false);
         }   
-    }, [])
+    }, [user, initialized, apiClient.token])
     
 
     return (

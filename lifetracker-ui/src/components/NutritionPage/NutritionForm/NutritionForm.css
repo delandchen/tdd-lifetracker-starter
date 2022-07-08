@@ -1,0 +1,26 @@
+.nutrition-form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 50px;
+    gap: 30px;
+}
+
+.nutrition-form input {
+    height: 7vh;
+    width: 25vw;
+    border-radius: 15px;
+    border: 1px #2c4147 solid;
+    text-align: center;
+}
+
+.nutrition-form button {
+    height: 5vh;
+    width: 15vw;
+    margin: auto;
+}
+
+.nutrition-form h1 {
+    margin: auto;
+    color: #2c4147;
+}

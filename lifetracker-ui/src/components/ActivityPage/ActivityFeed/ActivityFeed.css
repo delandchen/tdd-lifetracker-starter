@@ -1,0 +1,15 @@
+.activity-feed {
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+}
+
+.activity-feed .per-category {
+    display: flex;
+    flex-direction: row;
+}
+
+.activity-feed .per-day {
+    display: flex;
+    flex-direction: row;
+}

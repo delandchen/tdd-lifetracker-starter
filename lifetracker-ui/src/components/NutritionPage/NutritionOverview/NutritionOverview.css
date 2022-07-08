@@ -1,0 +1,17 @@
+.nutrition-overview {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.nutrition-overview .header {
+    font-size: 30px;
+    margin-left: 20px;
+}
+
+.nutrition-overview .record-nutrition {
+    height: 4vh;
+    width: 8vw;
+    background-color:rgb(38, 187, 38);
+    border-radius: 15px;
+}

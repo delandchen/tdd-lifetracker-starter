@@ -1,0 +1,19 @@
+.summary-stat {
+    display: flex;
+    margin: 15px;
+    border: 1px black solid;
+    flex-direction: column;
+    max-width: 15vw;
+    width: 15vw;
+    max-height: 15vh;
+    height: 15vh;
+    background-color: #2c4147;
+    border-radius: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.summary-stat p {
+    margin: auto;
+    color: white;
+}

@@ -9,6 +9,7 @@ export default function NutritionForm({handleSubmit, field, handleOnChange}) {
 
     return (
     <div className='nutrition-form'>
+        <h1> Create a new record </h1>
         <input type="text" name="name" placeholder='Enter a Name' value={field.name} onChange={handleOnChange}></input>
         <input type="text" name="category" placeholder='Enter a Category' value={field.category} onChange={handleOnChange}></input>
         <input type="number" name="calories" placeholder='Enter Calories' value={field.calories} onChange={handleOnChange}></input>
