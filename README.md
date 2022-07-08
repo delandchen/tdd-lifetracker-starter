@@ -20,7 +20,7 @@ Deployed Application: [Lifetracker Deployed Site](ADD_LINK_HERE)
 - [X] Users have access to an overview Activity page that show one summary statistic about each of the 3 types of activity tracked.
 - [X] The API should have a `security` middleware that only allows authenticated users to access resources and only allows users to access resources about themselves. 
 - [X] Users should have the ability to track at least **1** types of activities (i.e Nutrition, Exercise, Sleep, etc.). Each activity should be tracked on separate pages.
-- [X] Deployed website with Heroku & Surge. 
+- [ ] Deployed website with Heroku & Surge. 
 
 **Detailed Activity Page:**
 - [X] The detailed activity page should display a feed of all previous tracked activities.
@@ -39,7 +39,7 @@ Implement any of the following features to improve the application:
 
 ### Walkthrough Video
 
-https://www.loom.com/share/fb5fdd811234417f86f22a58539d26bd
+https://www.loom.com/share/67a7dc76e2c64eb19cb25baf94683cef
 
 ### Reflection
 
