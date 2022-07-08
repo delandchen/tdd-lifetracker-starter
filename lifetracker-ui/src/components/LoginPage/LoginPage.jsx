@@ -4,9 +4,11 @@ import AuthContext from 'components/contexts/auth';
 import { Navigate } from 'react-router-dom';
 import apiClient from '../../services/apiClient';
 
-export default function LoginPage({fieldError, setFieldError}) {
+export default function LoginPage() {
     // States for input values
-    const { loggedIn, setLoggedIn } = React.useContext(AuthContext);
+    const { errorContext, initializedContext } = React.useContext(AuthContext);
+    const [ error, setError ] = errorContext;
+    const [ initialized, setInitialized ] = initializedContext;
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
 
@@ -29,24 +31,24 @@ export default function LoginPage({fieldError, setFieldError}) {
         const { data, error } = await apiClient.loginUser(userData);
 
         if (error) {
-            setFieldError(error);
+            setError(error);
         }
         if (data?.user) {
-            setLoggedIn(true);
+            setInitialized(true);
             apiClient.setToken(data.token);
         }
     }
 
     return (
         <div className='login-page'>
-            {loggedIn && <Navigate to="/activity" replace={true} />}
+            {initialized && <Navigate to="/activity" replace={true} />}
             <div className="card"> 
                 <h1> Login </h1>
                 <div className='form'>
                     <input onChange={handleOnFormChange} className='form-input' type="email" name="email" placeholder='Enter a valid email' value={email}></input>
                     <input onChange={handleOnFormChange}className='form-input' type="password" name="password" placeholder='Enter a password' value={password}></input>
                     <div className="error">
-                        {fieldError ? <p> {fieldError} </p> : null}
+                        {error ? <p> {error} </p> : null}
                     </div>
                     <button className='submit-login' onClick={signUpUser}> Login </button>
                 </div>

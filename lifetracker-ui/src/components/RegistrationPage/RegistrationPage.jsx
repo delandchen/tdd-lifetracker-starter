@@ -4,9 +4,11 @@ import { Navigate } from 'react-router-dom';
 import AuthContext from 'components/contexts/auth';
 import apiClient from '../../services/apiClient';
 
-export default function RegistrationPage({fieldError, setFieldError}) {
+export default function RegistrationPage() {
     // States for input field values
-    const { loggedIn, setLoggedIn } = React.useContext(AuthContext);
+    const { errorContext, initializedContext } = React.useContext(AuthContext);
+    const [ error, setError ] = errorContext;
+    const [ initialized, setInitialized ] = initializedContext;
     const [email, setEmail] = React.useState("")
     const [username, setUsername] = React.useState("")
     const [firstName, setFirstName] = React.useState("")
@@ -44,28 +46,28 @@ export default function RegistrationPage({fieldError, setFieldError}) {
 
     const signUpUser = async () => {
         if (password != passwordConfirm) {
-            setFieldError("Passwords do not match");
+            setError("Passwords do not match");
             return;
         }
         else {
-            setFieldError("");
+            setError("");
         }
 
         const userData = {username: username, password: password, email: email, first_name: firstName, last_name: lastName}
         const { data, error } = await apiClient.signUpUser(userData);
 
         if (error) {
-            setFieldError(error);
+            setError(error);
         }
         if (data?.user) {
-            setLoggedIn(true);
+            setInitialized(true);
             apiClient.setToken(data.token);
         }
     } 
 
     return (
         <div className='registration-page'>
-            {loggedIn && <Navigate to="/activity" replace={true} />}
+            {initialized && <Navigate to="/activity" replace={true} />}
             <div className="card"> 
                 <h1> Register </h1>
                 <div className='form'>
@@ -78,7 +80,7 @@ export default function RegistrationPage({fieldError, setFieldError}) {
                     <input onChange={handleOnFormChange}className='form-input' type="password" name="password" placeholder='Enter a password' value={password}></input>
                     <input onChange={handleOnFormChange} className='form-input' type="password" name="passwordConfirm" placeholder='Confirm your password' value={passwordConfirm}></input>
                     <div className="error">
-                        {fieldError ? <p> {fieldError} </p> : null}
+                        {error ? <p> {error} </p> : null}
                     </div>
                     <button className='submit-registration' onClick={signUpUser}> Create Account </button>
                 </div>

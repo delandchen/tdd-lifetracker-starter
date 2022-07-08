@@ -2,6 +2,7 @@
 const authRoutes = require('./routes/auth');
 const nutritionRoutes = require('./routes/nutrition')
 const security = require('./middleware/security')
+const activityRoutes = require('./routes/activity')
 
 // Initialize server dependencies
 const express = require('express');
@@ -25,6 +26,7 @@ app.use(security.extractUserFromJwt);
 // Routes
 app.use('/auth', authRoutes);
 app.use('/nutrition', nutritionRoutes);
+app.use('/activity', activityRoutes);
 
 // 404 Error Handler
 app.use((req, res, next) => {

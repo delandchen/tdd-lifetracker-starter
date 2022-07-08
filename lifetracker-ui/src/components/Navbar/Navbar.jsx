@@ -4,7 +4,7 @@ import NavLinks from '../NavLinks/NavLinks'
 import logo from "./logo.png"
 import { Link } from 'react-router-dom';
 
-export default function Navbar({loggedin, handleSignOut}) {
+export default function Navbar({handleSignOut}) {
     return (
         <nav className="navbar">
             <div className='content'>
@@ -13,7 +13,7 @@ export default function Navbar({loggedin, handleSignOut}) {
                         <img src={logo} alt="logo"></img>
                     </Link>
                 </div>
-                <NavLinks loggedin={loggedin} handleSignOut={handleSignOut}/>
+                <NavLinks handleSignOut={handleSignOut}/>
             </div>
         </nav>
     )

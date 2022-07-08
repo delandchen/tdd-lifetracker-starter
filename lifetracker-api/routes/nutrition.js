@@ -5,7 +5,8 @@ const Nutrition = require('../models/nutrition');
 
 router.post('/', async (req, res, next) => {
     try {
-        const result = await Nutrition.createNutrition(req.body);
+        const { email } = res.locals.user;
+        const result = await Nutrition.createNutrition({...req.body, email});
         return res.status(201).json({ result });
     }
     catch (err) {
@@ -13,9 +14,21 @@ router.post('/', async (req, res, next) => {
     }
 })
 
-router.get('/', async (req, res, next) => {
+router.get('/', security.requireAuthenicatedUser, async (req, res, next) => {
     try {
-        const result = await Nutrition.listNutritionForUser(req.body.id);
+        const { email } = res.locals.user;
+        const result = await Nutrition.listNutritionForUser(email);
+        return res.status(200).json({ result });
+    }
+    catch (err) {
+        next(err);
+    }
+})
+
+router.get('/id/:nutritionId', security.requireAuthenicatedUser, async (req, res, next) => {
+    try {
+        const nutritionId = req.params.nutritionId;
+        const result = await Nutrition.getNutritionById(nutritionId);
         return res.status(200).json({ result });
     }
     catch (err) {

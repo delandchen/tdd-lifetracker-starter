@@ -1,0 +1,17 @@
+.nutrition-card {
+    display: flex;
+    margin: 15px;
+    border: 1px black solid;
+    flex-direction: column;
+    max-width: 25vw;
+    width: 25vw;
+    max-height: 30vh;
+    height: 30vh;
+    background-color: #2c4147;
+    border-radius: 15px;
+}
+
+.nutrition-card h2 {
+    margin: auto;
+    color: white;
+}

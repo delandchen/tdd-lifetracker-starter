@@ -53,6 +53,26 @@ class ApiClient {
         this.setToken(null);
         localStorage.removeItem(this.tokenName);
     }
+
+    async createNutrition(values) {
+        return await this.request({endpoint: "nutrition/", method:"POST", data: values})
+    }
+
+    async getNutrition() {
+        return await this.request({endpoint: "nutrition/", method:"GET"})
+    }
+
+    async getNutritionById(id) {
+        return await this.request({endpoint: `nutrition/id/${id}`, method: "GET"})
+    }
+
+    async getAvgCaloriesPerCategory() {
+        return await this.request({endpoint:'activity/avgCalories', method: "GET"});
+    }
+
+    async getTotalCaloriesPerDay() {
+        return await this.request({endpoint:'activity/totalCalories', method: "GET"});
+    }
 }
 
 export default new ApiClient("http://localhost:3001");
