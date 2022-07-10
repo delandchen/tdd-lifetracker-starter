@@ -2,7 +2,7 @@ const { Client } = require("pg");
 const { getDatabaseUri } = require("./config.js");
 require("colors");
 
-const db = new Client({connectionString: getDatabaseUri()});
+const db = new Client({connectionString: process.env.DATABASE_URL});
 
 db.connect((err) => {
     if (err) {
