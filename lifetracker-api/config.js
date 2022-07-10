@@ -9,7 +9,7 @@ const REACT_APP_REMOTE_HOST_URL = process.env.REACT_APP_REMOTE_HOST_URL;
 const getDatabaseUri = () => {
     const dbUser = process.env.DATABASE_USER || "postgres"
     const dbPass = process.env.DATABASE_PASS ? encodeURI(process.env.DATABASE_PASS) : "rams1359"
-    const dbHost = process.env.DATABASE_HOST || "localhost"
+    const dbHost = process.env.DATABASE_HOST || "0.0.0.0"
     const dbPort = process.env.DATABASE_PORT || 5432
     const dbName = process.env.DATABASE_NAME || "lifetracker"
 
