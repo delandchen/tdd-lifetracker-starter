@@ -2,7 +2,7 @@
 
 Submitted by: Deland Chen
 
-Deployed Application: [Lifetracker Deployed Site](functional-zipper.surge.sh)
+Deployed Application: functional-zipper.surge.sh
 
 
 ## Application Features
